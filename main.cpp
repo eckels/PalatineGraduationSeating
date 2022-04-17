@@ -14,15 +14,6 @@ int NUM_ROWS = 0;
 int ROW_LENGTH = 0;
 string FIRST_SIDE = "left";
 
-enum Attribute {
-    SeniorBoard,
-    Speaker,
-    AcademicScholar,
-    SPEDRegular,
-    SpedBack,
-    Excluded
-};
-
 struct Student {
     string first;
     string last;
@@ -303,7 +294,6 @@ void import_students() {
             stringstream str(line);
             while(getline(str, word, ',')) {
                 row.push_back(word);
-                //cout << word << endl;
             }
             content.push_back(row);
         }
@@ -324,11 +314,38 @@ void import_students() {
     }
 }
 
+vector<vector<Student*> > generate_speaker_lists(vector<vector<Seat*> >& seating, int rows) {
+    vector<vector<Student*> > lists;
+    vector<Student*> current;
+    for (int i = 0; i < NUM_ROWS; i++) {
+        for (int j = 0; j < ROW_LENGTH; j++) {
+            if (seating[i][j]->occupied) {
+                current.push_back(seating[i][j]->student);
+            }
+        }
+        if ((i + 1) % rows == 0) {
+            lists.push_back(current);
+            current.clear();
+        }
+    }
+    if (current.size() > 0) {
+        lists.push_back(current);
+    }
+    return lists;
+}
+
+void read_speaker_lists(vector<vector<Student*> >& lists) {
+    for (int i = 0; i < lists.size(); i++) {
+        cout << "------ NEW SPEAKER ------" << endl;
+        print_student_list(lists[i]);
+    }
+}
+
 int main(int argc, char *argv[]) {
     import_students();
     //print_student_list(RAW_STUDENTS);
     // Set up seating
-    NUM_ROWS = 10;
+    NUM_ROWS = 5;
     ROW_LENGTH = 5;
     generate_side(LEFT_SIDE);
     generate_side(RIGHT_SIDE);
@@ -338,6 +355,10 @@ int main(int argc, char *argv[]) {
     print_student_list(RAW_STUDENTS);
     populate_seating_chart();
     print_chart();
-    //cout << RIGHT_SIDE[3][4]->student->attribute << endl;
+
+    vector<vector<Student*> > left_lists = generate_speaker_lists(LEFT_SIDE, 4);
+    vector<vector<Student*> > right_lists = generate_speaker_lists(RIGHT_SIDE, 4);
+    read_speaker_lists(left_lists);
+    read_speaker_lists(right_lists);
     return 0;
 }
