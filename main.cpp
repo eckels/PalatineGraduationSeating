@@ -66,6 +66,7 @@ vector<vector<Seat*> > RIGHT_SIDE;
 queue<Student*> SIBLING_QUEUE;
 // Negative if more on left, positive if more on right. If zero, put on left
 int SIDE_DIFF = 0;
+int BANNER_SPACER_SIZE = 10;
 
 // Create empty candidate objects
 void generate_side(vector<vector<Seat*> >& side, bool first) {
@@ -115,6 +116,22 @@ void generate_banner_list() {
             STUDENTS_GRADUATING_ALPHABETICAL.push_back(current);
         }
     }
+}
+
+void print_banner_file() {
+    string spacer = "";
+    for (int i = 0; i < BANNER_SPACER_SIZE; i++) {
+        spacer += " ";
+    }
+
+    ofstream outfile ("arena_ribbon_banner.txt");
+
+    for (int i = 0; i < STUDENTS_GRADUATING_ALPHABETICAL.size(); i++) {
+        Student* current = STUDENTS_GRADUATING_ALPHABETICAL.at(i);
+        outfile << current->first << " " << current->last << spacer;
+    }
+
+    outfile.close();
 }
 
 void sort_students() {
@@ -388,8 +405,14 @@ void read_speaker_lists(vector<vector<Student*> >& lists) {
 }
 
 int main(int argc, char *argv[]) {
+    // Read students from CSV
     import_students();
     //print_student_list(RAW_STUDENTS);
+
+    // Create the banner
+    generate_banner_list();
+    print_banner_file();
+
     // Set up seating
     NUM_ROWS = 5;
     ROW_LENGTH = 5;
