@@ -36,15 +36,15 @@ const string RIGHT_SIDE_SPEAKER_FILE_NAME = "right_side_speaker_list.txt";
 const string SEATING_CHART_FILE_NAME = "seating_chart.csv";
 
 // Print seat number alongside name or not (speaker list and seating chart)
-const bool SPEAKER_SEAT_NUM_FLAG = true;
-const bool CHART_SEAT_NUM_FLAG = true;
+bool SPEAKER_SEAT_NUM_FLAG = true;
+bool CHART_SEAT_NUM_FLAG = true;
 
 // Number of faculty speakers on each side
-const int FACULTY_SPEAKER_SIDE_NUM = 2;
+int FACULTY_SPEAKER_SIDE_NUM = 2;
 
 // Stage rows and columns
-int NUM_ROWS = 38;
-int ROW_LENGTH = 9;
+int NUM_ROWS = 40;
+int ROW_LENGTH = 10;
 
 // Banner space size for the Arena banner
 const int BANNER_SPACER_SIZE = 10;
@@ -386,6 +386,28 @@ void print_seating_chart(string filename, bool seat_nums) {
     outfile.close();
 }
 
+void get_args(int argc, char *argv[]) {
+    STUDENT_IMPORT_NAME = argv[1];
+    cout << "File to import: " << STUDENT_IMPORT_NAME << endl;
+
+    NUM_ROWS = stoi(argv[2]);
+    cout << "Rows: " << NUM_ROWS << endl;
+
+    ROW_LENGTH = stoi(argv[3]);
+    cout << "Seats in each row: " << ROW_LENGTH << endl;
+
+    FACULTY_SPEAKER_SIDE_NUM = stoi(argv[4]);
+    cout << "Number of speakers on each side: " << FACULTY_SPEAKER_SIDE_NUM << endl;
+
+    string speakerflag(argv[5]);
+    SPEAKER_SEAT_NUM_FLAG = (speakerflag.find("yes") != string::npos) ? true : false;
+    cout << "Display seat numbers on speaker lists: " << ((SPEAKER_SEAT_NUM_FLAG) ? "Yes" : "No") << endl;
+
+    string seatingflag(argv[6]);
+    CHART_SEAT_NUM_FLAG = (seatingflag.find("yes") != string::npos) ? true : false;
+    cout << "Display seat numbers on seating chart: " << ((CHART_SEAT_NUM_FLAG) ? "Yes" : "No") << endl;
+}
+
 
 /**************************
 *
@@ -490,6 +512,9 @@ void debug_speaker_lists(vector<vector<Student*> >& lists) {
 **************************/
 
 int main(int argc, char *argv[]) {
+    // Read args
+    get_args(argc, argv);
+
     // Read students from CSV
     import_students();
 

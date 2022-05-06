@@ -50,7 +50,7 @@ Misc Attributes:
 
 When using the **Twins/Siblings** attribute, students must be listed successively in the list. **Twins/Siblings** supports only up to 2 siblings currently (i.e. Triplets are not supported).
 
-The **SPED With Helper** attribute must be followed by an entry with the attribute **TA Helper** so that they can be seated next to each other. 
+The **SPED With Helper** attribute must be followed by an entry with the attribute **TA Helper** so that they can be seated next to each other.
 
 ### Exporting your Excel file to CSV
 The next step is to convert your Excel file to CSV. You simply just need to hit "Save As" and change the file format to be .CSV instead of .XLSX.
@@ -61,14 +61,38 @@ Once you have done that, you are ready to run the program.
 There are some options that you may want to consider before you generate the files. 
 
 **Seating Setup**
-- Number of Rows
-- Number of Seats in Each Row
+- Number of Rows (Number)
+- Number of Seats in Each Row (Number)
 
 **Speaker Lists**
-- Number of speakers on each side
-- Display seat number in speaker list
+- Number of speakers on each side (Number)
+- Display seat numbers in speaker list (Yes or No)
 
 **Seating Chart**
-- Display seat number on seating chart
+- Display seat numbers on seating chart (Yes or No)
 
 Note: The seating setup is for each side of the stage. If you have 5 rows of 10 seats, then you will have 50 seats on each side for a total of 100 seats.
+
+# Running the Program
+To run the program you need to put the CSV file in the same folder as the main.cpp file for the program.
+
+Once you have done that you need to navigate to the folder in terminal. 
+
+Then to compile the program, run `make main`. 
+
+After this you will need to choose your configurations. Here is the format of the configurations: 
+
+`./main <filename> <rows> <columns> <speakers> <speaker_list_labels> <seating_chart_labels>`
+
+- **filename**: filename of list of students
+- **rows**: number of rows
+- **columns**: number of seats in each row on each side
+- **speakers**: number of speakers on each side of stage
+- **speaker_list_labels**: display seat numbers in speaker list (yes or no)
+- **seating_chart_labels**: display seat numbers on seating chart (yes or no)
+
+An example would be to run:
+`make main`
+Followed by
+`./main student_list.csv 38 9 3 no yes`
+Where "student_list.csv" is your list of graduates and you want 38 rows of 9 seats on each side of the stage and 3 speakers on each side. You would NOT get the seat numbers on the speaker list, but you would have seat numbers on the seating chart. 
