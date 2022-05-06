@@ -99,4 +99,4 @@ Where "student_list.csv" is your list of graduates and you want 38 rows of 9 sea
 
 This will generate the 4 files you need for graduation.
 
-Made by Evan Eckels
+Made by [Evan Eckels](https://www.evaneckels.com)
