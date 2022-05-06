@@ -12,7 +12,7 @@ The program requires an alphabetized CSV file of graduates to work. It should on
 2. First Name
 3. Attributes
 
-Note that this file should not have any labels. The first row of the file should contain the first student. The attributes section must adhere to certain keywords. See those attributes in the [Attributes]() section. 
+Note that this file should not have any labels. The first row of the file should contain the first student. The attributes section must adhere to certain keywords. See those attributes in the [Attributes](https://github.com/eckels/PalatineGraduationSeating#attributes) section. 
 
 ### Program Output
 This program will generate 4 files: 
@@ -59,3 +59,16 @@ Once you have done that, you are ready to run the program.
 
 # Program Configuration
 There are some options that you may want to consider before you generate the files. 
+
+**Seating Setup**
+- Number of Rows
+- Number of Seats in Each Row
+
+**Speaker Lists**
+- Number of speakers on each side
+- Display seat number in speaker list
+
+**Seating Chart**
+- Display seat number on seating chart
+
+Note: The seating setup is for each side of the stage. If you have 5 rows of 10 seats, then you will have 50 seats on each side for a total of 100 seats.
