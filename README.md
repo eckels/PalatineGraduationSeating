@@ -96,3 +96,7 @@ An example would be to run:
 Followed by
 `./main student_list.csv 38 9 3 no yes`
 Where "student_list.csv" is your list of graduates and you want 38 rows of 9 seats on each side of the stage and 3 speakers on each side. You would NOT get the seat numbers on the speaker list, but you would have seat numbers on the seating chart. 
+
+This will generate the 4 files you need for graduation.
+
+Made by Evan Eckels
