@@ -20,8 +20,8 @@ using namespace std;
 const string SENIOR_BOARD_KEYWORD = "Senior Board";
 const string SPEAKER_KEYWORD = "Speaker";
 const string ACADEMIC_SCHOLARS_KEYWORD = "Academic Scholar";
-const string SPED_REGULAR_KEYWORD = "SPED Regular";
-const string SPED_BACK_KEYWORD = "SPED Back";
+const string SPED_REGULAR_KEYWORD = "SPED Regular Seating";
+const string SPED_BACK_KEYWORD = "SPED Back Row";
 const string NOT_GRADUATING_KEYWORD = "Not Graduating";
 const string SIBLING_TWIN_KEYWORD = "Twins/Siblings";
 
