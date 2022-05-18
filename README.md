@@ -1,3 +1,5 @@
+Video Tutorial (Mac): [https://youtu.be/1n0oiX5XPPY](https://youtu.be/1n0oiX5XPPY)
+
 # Overview
 This program creates the seating chart for Palatine High School's graduation ceremony. It generates the following:
 
